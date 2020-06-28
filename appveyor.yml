@@ -18,7 +18,7 @@ test_script:
   - dotnet test ".\NetCoreTeamCity.Tests\NetCoreTeamCity.Tests.csproj" -c %CONFIGURATION% --logger:trx;LogFileName=tests-results01.xml
   - ps: .\build\uploadtests.ps1 ".\NetCoreTeamCity.Tests\TestResults\tests-results01.xml"
 artifacts:
-  - path: artifacts\**\*.*
+  - path: ..\artifacts\**\*.*
 cache:
   - '%USERPROFILE%\.nuget\packages'
 deploy:
