@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>NetCoreTeamCity</AssemblyName>
-    <PackageId>NetCoreTeamCity</PackageId>
+    <AssemblyName>teamcity-rest-client</AssemblyName>
+    <PackageId>teamcity-rest-client</PackageId>
     <PackageProjectUrl>https://github.com/monkey3310/netcore-teamcity-api/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/monkey3310/netcore-teamcity-api/blob/master/LICENSE</PackageLicenseUrl>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
