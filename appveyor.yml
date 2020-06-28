@@ -13,7 +13,7 @@ build:
   project: NetCoreTeamCity.sln
   
 after_build:
-  - dotnet pack ".\NetCoreTeamCity\NetCoreTeamCity.csproj" -c Release -o ../artifacts
+  - dotnet pack ".\NetCoreTeamCity\NetCoreTeamCity.csproj" -c Release -o artifacts
 test_script:
   - dotnet test ".\NetCoreTeamCity.Tests\NetCoreTeamCity.Tests.csproj" -c Release --logger:trx;LogFileName=tests-results01.xml
   - ps: .\build\uploadtests.ps1 ".\NetCoreTeamCity.Tests\TestResults\tests-results01.xml"
