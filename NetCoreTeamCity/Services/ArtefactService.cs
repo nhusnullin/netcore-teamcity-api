@@ -24,13 +24,14 @@ namespace NetCoreTeamCity.Services
             return Find(Endpoint, query);
         }
 
-        public async Task DownloadAsync(BuildLocator locator, string path, int count = 10)
+        public async IAsyncEnumerable<Artifact> DownloadAsync(BuildLocator locator, string path, int count = 10)
         {
             var artifacts = Find(locator, count);
 
             foreach (var artifact in artifacts)
             {
                 await ApiClient.DownloadAsync(artifact.Href, $"{path}/{artifact.Name}");
+                yield return artifact;
             }
         }
 

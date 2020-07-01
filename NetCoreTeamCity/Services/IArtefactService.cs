@@ -9,6 +9,6 @@ namespace NetCoreTeamCity.Services
     {
         IList<Artifact> Find(BuildLocator locator, int count = 10);
 
-        Task DownloadAsync(BuildLocator locator, string path, int count = 10);
+        IAsyncEnumerable<Artifact> DownloadAsync(BuildLocator locator, string path, int count = 10);
     }
 }
