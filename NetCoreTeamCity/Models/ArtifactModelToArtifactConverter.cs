@@ -9,8 +9,8 @@ namespace NetCoreTeamCity.Models
                 Name = model.Name,
                 Size = model.Size,
                 ModificationTime = model.ModificationTime,
-                Href = model.Href,
-                Content = new ArtifactContent(new Href(model.Content.Href))
+                Metadata = new Href(model.Href),
+                Content = new Href(model.Content?.Href)
             };
             return artifact;
         }
