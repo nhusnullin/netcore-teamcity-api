@@ -8,5 +8,6 @@ namespace NetCoreTeamCity.Models
         public string Size { get; set; }
         public DateTime? ModificationTime { get; set; }
         public string Href { get; set; }
+        public ArtifactModelContent Content { get; set; }
     }
 }

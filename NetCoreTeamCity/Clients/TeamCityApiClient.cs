@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NetCoreTeamCity.Exceptions;
 using NetCoreTeamCity.Helpers;
+using NetCoreTeamCity.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -102,7 +103,13 @@ namespace NetCoreTeamCity.Clients
         public async Task DownloadAsync(string url, string pathTo)
         {
             using var client = GetHttpClient();
-            await client.DownloadAsync(GetRequestUri(url), pathTo);
+            await client.DownloadAsync(GetRequestUri(url), pathTo).ConfigureAwait(false);
+        }
+        
+        public async Task DownloadAsync(Href href, string pathTo)
+        {
+            using var client = GetHttpClient();
+            await client.DownloadAsync(GetRequestUri(href), pathTo).ConfigureAwait(false);
         }
 
         private T2 MakeTwoWayRequest<T1, T2>(string url, T1 obj, Func<string, HttpContent, string, HttpResponseMessage> httpClientMethod)
@@ -148,6 +155,11 @@ namespace NetCoreTeamCity.Clients
         private string GetRequestUri(string url)
         {
             return new Uri(_teamCityConnectionSettings.TeamCityHost, $"{Auth}app/rest/{url}").ToString();
+        }
+        
+        private string GetRequestUri(Href href)
+        {
+            return new Uri(_teamCityConnectionSettings.TeamCityHost, $"{Auth}{href.Value}").ToString();
         }
 
         private string Auth

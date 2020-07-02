@@ -90,8 +90,8 @@ namespace NetCoreTeamCity.Clients
         public async Task DownloadAsync(string urlFrom, string pathTo)
         {
             var uri = new Uri(urlFrom);
-            var response = await _client.GetAsync(uri);
-            using var fs = new FileStream(pathTo, FileMode.CreateNew);
+            var response = await _client.GetAsync(uri).ConfigureAwait(false);
+            using var fs = new FileStream(pathTo, FileMode.Create);
             await response.Content.CopyToAsync(fs);
         }
 
