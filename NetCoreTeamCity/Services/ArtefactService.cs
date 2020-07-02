@@ -30,7 +30,7 @@ namespace NetCoreTeamCity.Services
 
             foreach (var artifact in artifacts)
             {
-                await ApiClient.DownloadAsync(artifact.Href, $"{path}/{artifact.Name}");
+                await ApiClient.DownloadAsync(artifact.Content.Href, $"{path}/{artifact.Name}").ConfigureAwait(false);
                 yield return artifact;
             }
         }
